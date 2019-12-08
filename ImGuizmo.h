@@ -117,7 +117,7 @@ namespace ImGuizmo
 	IMGUI_API void SetDrawlist();
 
 	// call BeginFrame right after ImGui_XXXX_NewFrame();
-	IMGUI_API void BeginFrame();
+	IMGUI_API void BeginFrame(ImDrawList*);
 
 	// return true if mouse cursor is over any gizmo control (axis, plan or screen component)
 	IMGUI_API bool IsOver();

@@ -819,23 +819,29 @@ namespace ImGuizmo
       gContext.mDrawList = ImGui::GetWindowDrawList();
    }
 
-   void BeginFrame()
+   void BeginFrame(ImDrawList* draw_list)
    {
       ImGuiIO& io = ImGui::GetIO();
 
-      const ImU32 flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoBringToFrontOnFocus;
-      ImGui::SetNextWindowSize(io.DisplaySize);
-      ImGui::SetNextWindowPos(ImVec2(0, 0));
-
-      ImGui::PushStyleColor(ImGuiCol_WindowBg, 0);
+      /*const ImU32 flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoBringToFrontOnFocus;
+      ImGui::SetNextWindowSize(size);
+      ImGui::SetNextWindowPos(pos);
+      
+      //ImGui::PushStyleColor(ImGuiCol_WindowBg, 0);
       ImGui::PushStyleColor(ImGuiCol_Border, 0);
       ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
 
       ImGui::Begin("gizmo", NULL, flags);
       gContext.mDrawList = ImGui::GetWindowDrawList();
+
+      auto ctx = ImGui::GetCurrentContext();
+      ImGui::BringWindowToFocusFront(ctx->CurrentWindow);
+      //ImGui::BringWindowToDisplayFront(ctx->CurrentWindow);
       ImGui::End();
       ImGui::PopStyleVar();
-      ImGui::PopStyleColor(2);
+      ImGui::PopStyleColor(1);*/
+
+      gContext.mDrawList = draw_list;
    }
 
    bool IsUsing()
